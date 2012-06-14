@@ -1,0 +1,18 @@
+{
+    "name": "webpipe",
+    "description": "JavaScript's Webpipe library.",
+    "homepage": "http://www.dozierhudson.com/projects/webpipejs/",
+    "keywords": [
+        "util",
+        "server",
+        "client",
+        "browser"
+    ],
+    "author": "Dozier Hudson <me@dozierhudson.com>",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/duzour/webpipejs.git"
+    },
+    "main": "webpipe.js",
+    "version": "0.1.0"
+}
