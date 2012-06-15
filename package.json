@@ -13,9 +13,14 @@
         "type": "git",
         "url": "git://github.com/duzour/webpipejs.git"
     },
-	"dependencies": {
-		"xmlhttprequest": "1.4.2"
-	},
+    "dependencies": {
+        "xmlhttprequest": "1.4.2"
+    },
     "main": "webpipe.js",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "devDependencies": {},
+    "optionalDependencies": {},
+    "engines": {
+        "node": "*"
+    }
 }

@@ -2,6 +2,16 @@
 
 Javascript library for Webpipes. Use with Node.js or in the browser.
 
+## Installation
+
+Just include the script. The webpipe object is automagically added to your environment. No need for `new` or any other sort of initialization. As a courtesy, webpipejs.org offers a CDN hosted version for speedy inclusion. In the browser do the following (you can also use HTTPS):
+	
+	<script src="http://cdn.webpipejs.org/0.1.0/webpipe.min.js"></script>
+	
+or if you're using webpipe.js with node.js
+
+	$ npm -g install webpipe 
+
 ## Usage
 
 Webpipe.js exposes two methods: `webpipe.request()` and `webpipe.manual()`. If you'd like to see more examples [read my tutorial](http://www.dozierhudson.com/projects/webpipe.js/).
