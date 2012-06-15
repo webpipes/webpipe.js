@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express.createServer(express.logger());
 var webpipe = require('../../webpipe');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 	
 app.use(express.bodyParser());
 
