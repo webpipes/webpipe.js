@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Webpipe.js</title>
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+	<h1>Webpipe.js</h1> 
+	<h2>Javascript library for interacting with Webpipes.</h2>
+	<p>Webpipes are tiny HTTP programs that do one thing and do it well. They fill in the gaps. Need a proxy? Need to convert Markdown to HTML?  Give a Webpipe some input, and it'll give you some output. They're a handy tool to have in your arsenal.</p>
+	<p><a href="http://www.webpipes.org/">Learn more at Webpipes.org &rarr;</a></p>
+				
+					
+	<h2>Usage Example</h2>
+	<p>Webpipe.js exposes two methods: <code>webpipe.manual()</code> and <code>webpipe.request()</code>.</p>
+
+	<h3>webpipe.manual()</h3>
+	<p>This is a convenience function that returns the webpipe.json for the webpipe in question.</p>
+					
+<pre class="prettyprint">webpipe.manual('proxy', function (er, data) {
+	if (er) {
+		console.log("Error: "  + er);
+	} else {
+		console.log(data);
+	}
+});</pre>
+
+	<p>Results in the following output:</p>
+	<pre id="proxy-manual"></pre> 
+
+
+
+	<h3>webpipe.request()</h3>
+	<p>The real workhorse is <code>webpipe.request()</code>. This allows you to make requests to any webpipe in registry.webpipes.org.</p>
+
+<pre class="prettyprint">var url = "https://raw.github.com/duzour/dotfiles/master/README.md";
+webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
+	if (er) {
+		console.log("Error: "  + er);
+	} else {
+		console.log(data);
+	}
+});</pre>		
+		
+	<p>Results in the following output:</p>
+	<pre id="proxy-request"></pre>
+		
+		
+	<h3>Pulling it Together: Combining Webpipes</h3>
+	<p>You can combine requests together, thus truly harnessing the power of pipes. For example, lets convert my README from Markdown to HTML.</p>
+
+<pre class="prettyprint">var url = "https://raw.github.com/duzour/dotfiles/master/README.md";
+webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
+	if (er) {
+		console.log("Error: "  + er);
+	} else {
+		webpipe.request('markdown-to-html', { markdown : data }, function (er, data) {
+			if (er) {
+				console.log("Error: "  + er);
+			} else {
+				console.log(data);
+			}
+		});
+	}
+})</pre>		
+
+	<p>Results in the following output:</p>
+	<pre id="combined-request"  class="prettyprint"></pre>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+	<script src="../../webpipe-min.js"></script>
+	<script>
+		
+		webpipe.manual('proxy', function (er, data) {
+			
+			if (er) {
+				$("#proxy-manual").append("Error: "  + er);
+			} else {
+				$("#proxy-manual").append(prettyJSON(JSON.parse(data)));
+			}
+		});
+		
+		
+		var url = "https://raw.github.com/duzour/dotfiles/master/README.md";
+	
+		webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
+			
+			if (er) {
+				$("#proxy-request").append("Error: "  + er);
+			} else {
+				$("#proxy-request").append(data);
+			}
+		});
+		
+		var url = "https://raw.github.com/duzour/dotfiles/master/README.md";
+		webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
+			if (er) {
+				$("#combined-request").append("Error: "  + er);
+			} else {
+		
+				webpipe.request('markdown-to-html', { markdown : data }, function (er, data) {
+					if (er) {
+						$("#combined-request").append("Error: "  + er);
+					} else {
+						$("#combined-request").append(escapeHTML(data));
+					}
+				});
+			}
+		})
+		
+		function escapeHTML(html) { 
+			return html.replace(/&/g,'&amp;')
+						.replace(/>/g,'&gt;')
+						.replace(/</g,'&lt;')
+						.replace(/"/g,'&quot;'); 
+		};
+
+		function prettyJSON(json) {
+			json = JSON.stringify(json, undefined, 4);
+		    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+		    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+		        var cls = 'number';
+		        if (/^"/.test(match)) {
+		            if (/:$/.test(match)) {
+		                cls = 'key';
+		            } else {
+		                cls = 'string';
+		            }
+		        } else if (/true|false/.test(match)) {
+		            cls = 'boolean';
+		        } else if (/null/.test(match)) {
+		            cls = 'null';
+		        }
+		        return '<span class="' + cls + '">' + match + '</span>';
+		    });
+		}
+	</script>
+
+
+</body>
+</html>
