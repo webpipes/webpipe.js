@@ -1,4 +1,4 @@
-//     Webpipe.js 0.0.1
+//     Webpipe.js 0.1.1
 //     (c) 2012 Dozier Hudson
 //     Webpipe.js is freely distributable under the MIT license.
 //     Portions of Webpipe.js are inspired or borrowed from Underscore.
@@ -34,7 +34,7 @@
 	}
 
 	// Current version.
-	webpipe.VERSION = '0.0.1';
+	webpipe.VERSION = '0.1.1';
 
 	webpipe.REGISTRY = 'http://registry.webpipes.org/'
 	webpipe.DISPATCH = 'http://dispatch.webpipes.org/'
@@ -105,6 +105,8 @@
 			    }
 			}
 			ajaxObj.open(options.method, options.url, true);
+			ajaxObj.setRequestHeader('X-Requested-With',
+			 							'Webpipe.js/' + webpipe.VERSION);
 			
 			if (options.method === "POST") {
 				ajaxObj.setRequestHeader("Content-Type",
@@ -130,6 +132,8 @@
 				    }
 				}
 				ajaxObj.open(options.method, options.url, true);
+				ajaxObj.setRequestHeader('X-Requested-With',
+				 							'Webpipe.js/' + webpipe.VERSION);
 				
 				if (options.method === "POST") {
 					ajaxObj.setRequestHeader("Content-Type",
