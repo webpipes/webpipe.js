@@ -1,4 +1,4 @@
-//     Webpipe.js 0.1.1
+//     Webpipe.js 0.1.2
 //     (c) 2012 Dozier Hudson
 //     Webpipe.js is freely distributable under the MIT license.
 //     Portions of Webpipe.js are inspired or borrowed from Underscore.
@@ -34,7 +34,7 @@
 	}
 
 	// Current version.
-	webpipe.VERSION = '0.1.1';
+	webpipe.VERSION = '0.1.2';
 
 	webpipe.REGISTRY = 'http://registry.webpipes.org/'
 	webpipe.DISPATCH = 'http://dispatch.webpipes.org/'
@@ -89,7 +89,7 @@
 		}
 		
 		// Compose the query string.
-		if (options.data && Object.keys(options).length) {
+		if (options.data && Object.keys(options.data).length) {
 			queryString = me.makeQueryString(options.data);
 		}
 		
