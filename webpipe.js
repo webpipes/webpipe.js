@@ -66,102 +66,78 @@
 	// Private Utility 
 	// ---------------
 	
-	// Inspired by: http://code.google.com/edu/ajax/tutorials/ajax-tutorial.html
 	// Options should be a dict with url, method, data, + callback function
 	me.ajax = function(options) {
 		var ajaxObj;
-		var queryString = "";
-		
-		if (typeof options !== "object") {
+		var queryString = '';
+
+		if (typeof options !== 'object') {
 			return false;
 		}
-		
+
 		// Ensure the required properties are set
 		if (   !options.hasOwnProperty('url') 
 			|| !options.hasOwnProperty('method') 
 			|| !options.hasOwnProperty('callback')) {
 			return false;
 		}
-		
+
 		// Ensure the callback is a function
-		if (typeof options.callback === "function") {
+		if (typeof options.callback !== 'function') {
 			return false;
 		}
-		
+
 		// Compose the query string.
 		if (options.data && Object.keys(options.data).length) {
-			queryString = me.makeQueryString(options.data);
+			for (key in options.data) {
+			    queryString += key + '=' + options.data[key] + '&';
+			}
+			queryString = queryString.slice(0, queryString.length - 1);
 		}
-		
+
+		// Initialize the AJAX object.
 		if (root.XMLHttpRequest) {
 			ajaxObj = new root.XMLHttpRequest();
-			ajaxObj.onreadystatechange = function() {
-			     if (this.readyState === 4) {
-			        if (this.status === 200) {
-						options.callback(false, this.responseText);
-			        } else {
-			            options.callback(true, this.responseText);
-			        }
-			    }
-			}
-			ajaxObj.open(options.method, options.url, true);
-			ajaxObj.setRequestHeader('X-Requested-With',
-			 							'Webpipe.js/' + webpipe.VERSION);
-			
-			if (options.method === "POST") {
-				ajaxObj.setRequestHeader("Content-Type",
-				 						"application/x-www-form-urlencoded");
-			}
-			
-			if (queryString.length) {
-				ajaxObj.send(queryString);
-			} else {
-				ajaxObj.send(null);
-			}
 		} else if (root.ActiveXObject) {
-			ajaxObj = new ActiveXObject("Microsoft.XMLHTTP");
-			
-			if (ajaxObj) {
-				ajaxObj.onreadystatechange = function() {
-				     if (this.readyState === 4) {
-				        if (this.status === 200) {
-							options.callback(false, this.responseText);
-				        } else {
-				            options.callback(true, this.responseText);
-				        }
-				    }
-				}
-				ajaxObj.open(options.method, options.url, true);
-				ajaxObj.setRequestHeader('X-Requested-With',
-				 							'Webpipe.js/' + webpipe.VERSION);
-				
-				if (options.method === "POST") {
-					ajaxObj.setRequestHeader("Content-Type",
-										"application/x-www-form-urlencoded");
-				}
-				
-				if (queryString.length) {
-					ajaxObj.send(queryString);
-				} else {
-					ajaxObj.send();
-				}
-			}
+			ajaxObj = new ActiveXObject('Microsoft.XMLHTTP');		
 		} else {
-			options.callback("Environment does not support XMLHttpRequest", {});
+			options.callback('Environment does not support XMLHttpRequest', {});
+			return;
 		}
-	}
 
-	// Construct a query string from an Object
-	me.makeQueryString = function(obj) {
-		var queryString = "";
-		
-		for (key in obj) {
-		    queryString += key + '=' + obj[key] + '&';
+		// Set the AJAX request state callback
+		ajaxObj.onreadystatechange = function() {
+		     if (this.readyState === 4) {
+		        if (this.status === 200) {
+					options.callback(false, this.responseText);
+		        } else {
+		            options.callback(true, this.responseText);
+		        }
+		    }
 		}
-		
-		return queryString.slice(0, queryString.length - 1); 
-	}
 
+		ajaxObj.open(options.method, options.url, true);
+
+		// User-Agent header is illegal, but X-Requested-With is available
+		ajaxObj.setRequestHeader('X-Requested-With',
+		 							'Webpipe.js/' + webpipe.VERSION);
+
+		// If this is POST, add the appropriate HTTP header
+		if (options.method === 'POST') {
+			ajaxObj.setRequestHeader('Content-Type',
+			 						'application/x-www-form-urlencoded');
+		}
+
+		// Send the request
+		if (queryString.length) {
+			ajaxObj.send(queryString);
+		} else if (root.XMLHttpRequest){
+			ajaxObj.send(null);
+		} else {
+			ajaxObj.send();
+		}
+	};
+	
 	// The OOP Wrapper
 	// ---------------
 	
