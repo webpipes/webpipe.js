@@ -5,19 +5,19 @@
 //     For all details and documentation:
 //     http://www.webpipejs.org/
 
-(function() {
+(function () {
 
 	// Baseline setup
 	// --------------
 
 	// Establish the root object, `window` in the browser, or `global` on the server.
 	var root = this;
-	
+
 	// Establish a 'private' object.
 	var me = {};
-	
+
 	// Create a safe reference to the Webpipe object for use below.
-	var webpipe = function(obj) { return new wrapper(obj); };
+	var webpipe = function (obj) { return new wrapper(obj); };
 
 	// Export the Webpipe object for **Node.js**, with
 	// backwards-compatibility for the old `require()` API. If we're in
@@ -36,8 +36,8 @@
 	// Current version.
 	webpipe.VERSION = '0.1.2';
 
-	webpipe.REGISTRY = 'http://registry.webpipes.org/'
-	webpipe.DISPATCH = 'http://dispatch.webpipes.org/'
+	webpipe.REGISTRY = 'http://registry.webpipes.org/';
+	webpipe.DISPATCH = 'http://dispatch.webpipes.org/';
 	
 	// Main Functions
 	// -----------------
@@ -72,7 +72,7 @@
 		var ajaxObj;
 		var queryString = "";
 		
-		if (typeof options != "object") {
+		if (typeof options !== "object") {
 			return false;
 		}
 		
@@ -84,7 +84,7 @@
 		}
 		
 		// Ensure the callback is a function
-		if (typeof options.callback != "function") {
+		if (typeof options.callback === "function") {
 			return false;
 		}
 		
@@ -96,8 +96,8 @@
 		if (root.XMLHttpRequest) {
 			ajaxObj = new root.XMLHttpRequest();
 			ajaxObj.onreadystatechange = function() {
-			     if (this.readyState == 4) {
-			        if (this.status == 200) {
+			     if (this.readyState === 4) {
+			        if (this.status === 200) {
 						options.callback(false, this.responseText);
 			        } else {
 			            options.callback(true, this.responseText);
@@ -123,8 +123,8 @@
 			
 			if (ajaxObj) {
 				ajaxObj.onreadystatechange = function() {
-				     if (this.readyState == 4) {
-				        if (this.status == 200) {
+				     if (this.readyState === 4) {
+				        if (this.status === 200) {
 							options.callback(false, this.responseText);
 				        } else {
 				            options.callback(true, this.responseText);
