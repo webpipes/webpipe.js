@@ -9,7 +9,8 @@
 	
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
-
+<body>
+	
 	<h1>Webpipe.js</h1> 
 	<h2>Javascript library for interacting with Webpipes.</h2>
 	<p>Webpipes are tiny HTTP programs that do one thing and do it well. They fill in the gaps. Need a proxy? Need to convert Markdown to HTML?  Give a Webpipe some input, and it'll give you some output. They're a handy tool to have in your arsenal.</p>
@@ -73,7 +74,7 @@ webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 	<pre id="combined-request"  class="prettyprint"></pre>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
-	<script src="../../webpipe.js"></script>
+	<script src="../../webpipe-min.js"></script>
 	<script>
 		
 		webpipe.manual('proxy', function (er, data) {
