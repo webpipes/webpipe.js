@@ -1,23 +1,23 @@
 {
     "name": "webpipe",
     "description": "JavaScript's Webpipe library.",
-    "homepage": "http://www.dozierhudson.com/projects/webpipejs/",
+    "homepage": "http://www.matthewghudson.com/projects/webpipe.js/",
     "keywords": [
         "util",
         "server",
         "client",
         "browser"
     ],
-    "author": "Dozier Hudson <me@dozierhudson.com>",
+    "author": "Matthew Hudson <matt@matthewghudson.com>",
     "repository": {
         "type": "git",
-        "url": "git://github.com/duzour/webpipejs.git"
+        "url": "git://github.com/matthewhudson/webpipe.js.git"
     },
     "dependencies": {
         "xmlhttprequest": "1.4.2"
     },
     "main": "webpipe.js",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "devDependencies": {},
     "optionalDependencies": {},
     "engines": {
