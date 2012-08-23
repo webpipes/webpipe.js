@@ -1,9 +1,9 @@
-//     Webpipe.js 0.1.2
-//     (c) 2012 Dozier Hudson
+//     Webpipe.js 0.2.0
+//     (c) 2012 Matthew Hudson
 //     Webpipe.js is freely distributable under the MIT license.
 //     Portions of Webpipe.js are inspired or borrowed from Underscore.
 //     For all details and documentation:
-//     http://www.webpipejs.org/
+//     http://www.matthewghudson.com/projects/webpipe.js/
 
 (function () {
 
@@ -34,27 +34,27 @@
 	}
 
 	// Current version.
-	webpipe.VERSION = '0.1.2';
+	webpipe.VERSION = '0.2.0';
 
 	webpipe.REGISTRY = 'http://registry.webpipes.org/';
 	webpipe.DISPATCH = 'http://dispatch.webpipes.org/';
-	
+
 	// Main Functions
 	// -----------------
-	
+
 	webpipe.manual = function(webpipeName, callback) {
 		var url = webpipe.REGISTRY +"webpipes/"+ webpipeName;
-		
+
 		me.ajax({
 			url: url,
 			method: "GET",
 			callback: callback
 		});
 	};
-	
+
 	webpipe.request = function(webpipeName, data, callback) {
 		var url = webpipe.DISPATCH + webpipeName;
-		
+
 		me.ajax({
 			url: url,
 			method: "POST",
@@ -65,7 +65,7 @@
 
 	// Private Utility 
 	// ---------------
-	
+
 	// Options should be a dict with url, method, data, + callback function
 	me.ajax = function(options) {
 		var ajaxObj;
@@ -137,13 +137,13 @@
 			ajaxObj.send();
 		}
 	};
-	
+
 	// The OOP Wrapper
 	// ---------------
-	
+
 	var wrapper = function(obj) { this._wrapped = obj; };
 
 	// Expose `wrapper.prototype` as `webpipe.prototype`
 	webpipe.prototype = wrapper.prototype;
-	
+
 }).call(this);
