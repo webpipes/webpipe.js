@@ -1,4 +1,4 @@
-# [WEBPIPE.JS](http://www.dozierhudson.com/projects/webpipe.js/)
+# [WEBPIPE.JS](http://www.matthewghudson.com/projects/webpipe.js/)
 
 Javascript library for Webpipes. Use with Node.js or in the browser.
 
@@ -22,7 +22,7 @@ or if you're using webpipe.js with node.js
 
 ## Usage
 
-Webpipe.js exposes two methods: `webpipe.request()` and `webpipe.manual()`. If you'd like to see more examples [read my tutorial](http://www.dozierhudson.com/projects/webpipe.js/).
+Webpipe.js exposes two methods: `webpipe.request()` and `webpipe.manual()`. If you'd like to see more examples [read my tutorial](http://www.matthewghudson.com/projects/webpipe.js/).
 
 ### webpipe.manual(webpipeName, callback)
 
@@ -44,7 +44,7 @@ webpipe.manual('proxy', function (er, data) {
 The real workhorse is `webpipe.request()`. You can use it to make a request to your webpipe of choice.
 
 ``` javascript
-var url = "https://raw.github.com/duzour/dotfiles/master/README.md";
+var url = "https://raw.github.com/matthewhudson/dotfiles/master/README.md";
 webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 	if (er) {
 		console.log("Error: "  + er);
