@@ -38,7 +38,7 @@
 	<h3>webpipe.request()</h3>
 	<p>The real workhorse is <code>webpipe.request()</code>. This allows you to make requests to any webpipe in registry.webpipes.org.</p>
 
-<pre class="prettyprint">var url = "https://raw.github.com/duzour/dotfiles/master/README.md";
+<pre class="prettyprint">var url = "https://raw.github.com/matthewhudson/dotfiles/master/README.md";
 webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 	if (er) {
 		console.log("Error: "  + er);
@@ -54,7 +54,7 @@ webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 	<h3>Pulling it Together: Combining Webpipes</h3>
 	<p>You can combine requests together, thus truly harnessing the power of pipes. For example, lets convert my README from Markdown to HTML.</p>
 
-<pre class="prettyprint">var url = "https://raw.github.com/duzour/dotfiles/master/README.md";
+<pre class="prettyprint">var url = "https://raw.github.com/matthewhudson/dotfiles/master/README.md";
 webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 	if (er) {
 		console.log("Error: "  + er);
@@ -79,33 +79,33 @@ webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 		webpipe.manual('proxy', function (er, data) {
 			
 			if (er) {
-				$("#proxy-manual").append("Error: "  + er);
+				$("#proxy-manual").append("Proxy Webpipe Error: "  + er);
 			} else {
 				$("#proxy-manual").append(prettyJSON(JSON.parse(data)));
 			}
 		});
 		
 		
-		var url = "https://raw.github.com/duzour/dotfiles/master/README.md";
+		var url = "https://raw.github.com/matthewhudson/dotfiles/master/README.md";
 	
 		webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 			
 			if (er) {
-				$("#proxy-request").append("Error: "  + er);
+				$("#proxy-request").append("Proxy Webpipe Error: "  + er);
 			} else {
 				$("#proxy-request").append(data);
 			}
 		});
 		
-		var url = "https://raw.github.com/duzour/dotfiles/master/README.md";
+		var url = "https://raw.github.com/matthewhudson/dotfiles/master/README.md";
 		webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 			if (er) {
-				$("#combined-request").append("Error: "  + er);
+				$("#combined-request").append("Proxy Webpipe Error: "  + er);
 			} else {
 		
 				webpipe.request('markdown-to-html', { markdown : data }, function (er, data) {
 					if (er) {
-						$("#combined-request").append("Error: "  + er);
+						$("#combined-request").append("Markdown Webpipe Error: "  + er);
 					} else {
 						$("#combined-request").append(escapeHTML(data));
 					}
