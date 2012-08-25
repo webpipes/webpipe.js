@@ -1,1 +1,1 @@
-module.exports = require('./webpipe');
+module.exports = require('./lib/webpipe');
