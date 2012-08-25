@@ -16,7 +16,7 @@
     "dependencies": {
         "xmlhttprequest": "1.4.2"
     },
-    "main": "webpipe.js",
+    "main": "./lib/webpipe.js",
     "version": "0.2.0",
     "devDependencies": {},
     "optionalDependencies": {},
