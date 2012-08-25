@@ -55,6 +55,14 @@ webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 });
 ``` 
 
+## More Examples
+
+See [./examples/browser/index.html](https://github.com/matthewhudson/webpipe.js/blob/master/examples/browser/index.html) and [./examples/nodejs/index.js](https://github.com/matthewhudson/webpipe.js/blob/master/examples/nodejs/index.js) for more examples of usage. If you'd like to see even more examples [read my tutorial](http://www.matthewghudson.com/projects/webpipe.js/) to see Webpipe.js in action.
+
+## Suggestions
+
+All comments in how to improve this library are very welcome. Feel free post suggestions to the Issue tracker, or even better, fork the repository to implement your own ideas and submit a pull request.
+
 ## License
 
 Unless attributed otherwise, everything is under the MIT License (see LICENSE for more info).
