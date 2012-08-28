@@ -55,6 +55,18 @@ webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
 });
 ``` 
 
+## Command-line Usage 
+
+You can also use webpipe.js from the command-line. To use this feature make sure you install webpipe.js globally. 
+
+### Manual
+
+	$ webpipe --name proxy --manual
+	
+### Request
+
+	$ webpipe --name proxy --request --url http://www.google.com/ --method GET
+
 ## More Examples
 
 See [./examples/browser/index.html](https://github.com/matthewhudson/webpipe.js/blob/master/examples/browser/index.html) and [./examples/nodejs/index.js](https://github.com/matthewhudson/webpipe.js/blob/master/examples/nodejs/index.js) for more examples of usage. If you'd like to see even more examples [read my tutorial](http://www.matthewghudson.com/projects/webpipe.js/) to see Webpipe.js in action.
