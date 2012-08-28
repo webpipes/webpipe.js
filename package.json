@@ -20,7 +20,7 @@
 	"preferGlobal": true,
     "main": "./lib/webpipe.js",
 	"bin": "./bin/webpipe.js",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "devDependencies": {},
     "optionalDependencies": {},
     "engines": {
