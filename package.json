@@ -1,12 +1,13 @@
 {
     "name": "webpipe",
-    "description": "JavaScript's Webpipe library.",
+    "description": "Harness the power of webpipes in browser and server environments, as well as the command-line.",
     "homepage": "http://www.matthewghudson.com/projects/webpipe.js/",
     "keywords": [
         "util",
         "server",
         "client",
-        "browser"
+        "browser",
+		"cli"
     ],
     "author": "Matthew Hudson <matt@matthewghudson.com>",
     "repository": {
@@ -16,7 +17,9 @@
     "dependencies": {
         "xmlhttprequest": "1.4.2"
     },
+	"preferGlobal": true,
     "main": "./lib/webpipe.js",
+	"bin": "./bin/webpipe.js",
     "version": "0.2.0",
     "devDependencies": {},
     "optionalDependencies": {},
