@@ -22,7 +22,7 @@ var webpipe = require("webpipe");
 
 ## Usage
 
-webpipe.js exposes two methods: `webpipe.execute()` and `webpipe.help()`. If you'd like to see more examples [read my tutorial](http://www.matthewghudson.com/projects/webpipe.js/).
+webpipe.js exposes two methods: `webpipe.execute()` and `webpipe.options()`. 
 
 ### webpipe.options(url, callback)
 
@@ -71,7 +71,7 @@ Prefix a value with `@` to read from a file, or `-` for STDIN:
 
 ## More Examples
 
-See [./examples/browser/index.html](https://github.com/matthewhudson/webpipe.js/blob/master/examples/browser/index.html) and [./examples/nodejs/index.js](https://github.com/matthewhudson/webpipe.js/blob/master/examples/nodejs/index.js) for more examples of usage. If you'd like to see even more examples [read my tutorial](http://www.matthewghudson.com/projects/webpipe.js/) to see Webpipe.js in action.
+See [./examples/browser/index.html](https://github.com/webpipes/webpipe.js/blob/master/examples/browser/index.html) and [./examples/nodejs/index.js](https://github.com/webpipes/webpipe.js/blob/master/examples/nodejs/index.js) for more examples of usage.
 
 ## Suggestions
 
