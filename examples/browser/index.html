@@ -1,147 +1,86 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Webpipe.js</title>
-	
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpipe.js</title>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style type="text/css">
+        body {
+            padding: 20px;
+        }
+        pre {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-	
-	<h1>Webpipe.js</h1> 
-	<h2>Javascript library for interacting with Webpipes.</h2>
-	<p>Webpipes are tiny HTTP programs that do one thing and do it well. They fill in the gaps. Need a proxy? Need to convert Markdown to HTML?  Give a Webpipe some input, and it'll give you some output. They're a handy tool to have in your arsenal.</p>
-	<p><a href="http://www.webpipes.org/">Learn more at Webpipes.org &rarr;</a></p>
-				
-					
-	<h2>Usage Example</h2>
-	<p>Webpipe.js exposes two methods: <code>webpipe.manual()</code> and <code>webpipe.request()</code>.</p>
+    
+    <h1>webpipe.js</h1> 
+    <h4>JavaScript library for interacting with WebPipes.</h4>
+    <p>WebPipes are tiny HTTP programs that do one thing and do it well. They fill in the gaps. Need a proxy? Need to convert Markdown to HTML?  Give a WebPipe some input, and it'll give you some output. They're a handy tool to have in your arsenal.</p>
+    <p><a href="http://www.webpipes.org/">Learn more at webpipes.org &rarr;</a></p>
 
-	<h3>webpipe.manual()</h3>
-	<p>This is a convenience function that returns the webpipe.json for the webpipe in question.</p>
-					
-<pre class="prettyprint">webpipe.manual('proxy', function (er, data) {
-	if (er) {
-		console.log("Error: "  + er);
-	} else {
-		console.log(data);
-	}
+    <h2>Usage Example</h2>
+    <p>WebPipe.js exposes two methods: <code>webpipe.options()</code> and <code>webpipe.execute()</code>.</p>
+    <p>Click run below each example to see the result. Edit the code and test it again.</p>
+
+    <h3>webpipe.options(url, callback)</h3>
+    <p>This is a convenience function that returns the JSON descriptor for the WebPipe in question.</p>
+<pre id="options-input" contenteditable>var blockURL = "http://block-parse-markdown.herokuapp.com/";
+webpipe.options(blockURL, function (err, data) {
+  if (err) {
+    console.log("Error: ", err);
+  } else {
+    // Prints the webpipe.json config for the Parse Markdown webpipe.
+    console.log(data);
+  }
 });</pre>
-
-	<p>Results in the following output:</p>
-	<pre id="proxy-manual"></pre> 
-
+    <div><button id="options-button" class="btn btn-inverse btn-small">Run</button></div>
+    <pre id="options-output"></pre> 
 
 
-	<h3>webpipe.request()</h3>
-	<p>The real workhorse is <code>webpipe.request()</code>. This allows you to make requests to any webpipe in registry.webpipes.org.</p>
+    <h3>webpipe.execute(url, inputs, callback)</h3>
+    <p>The real workhorse is <code>webpipe.execute()</code>. This handles the dirty work of executing a WebPipe.</p>
+<pre id="execute-input" contenteditable>var blockURL = "http://block-parse-markdown.herokuapp.com/";
+webpipe.execute(blockURL, { markdown: "*hello world*" }, function (err, data) {
+  if (err) {
+    console.log("Error: ", err);
+  } else {
+    // Prints the outputs of the WebPipe.
+    console.log(data);
+  }
+});</pre>
+    <div><button id="execute-button" class="btn btn-inverse btn-small">Run</button></div>
+    <pre id="execute-output"></pre> 
 
-<pre class="prettyprint">var url = "https://raw.github.com/matthewhudson/dotfiles/master/README.md";
-webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
-	if (er) {
-		console.log("Error: "  + er);
-	} else {
-		console.log(data);
-	}
-});</pre>		
-		
-	<p>Results in the following output:</p>
-	<pre id="proxy-request"></pre>
-		
-		
-	<h3>Pulling it Together: Combining Webpipes</h3>
-	<p>You can combine requests together, thus truly harnessing the power of pipes. For example, lets convert my README from Markdown to HTML.</p>
-
-<pre class="prettyprint">var url = "https://raw.github.com/matthewhudson/dotfiles/master/README.md";
-webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
-	if (er) {
-		console.log("Error: "  + er);
-	} else {
-		webpipe.request('markdown-to-html', { markdown : data }, function (er, data) {
-			if (er) {
-				console.log("Error: "  + er);
-			} else {
-				console.log(data);
-			}
-		});
-	}
-})</pre>		
-
-	<p>Results in the following output:</p>
-	<pre id="combined-request"  class="prettyprint"></pre>
-
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
-	<script src="../../webpipe-min.js"></script>
-	<script>
-		
-		webpipe.manual('proxy', function (er, data) {
-			
-			if (er) {
-				$("#proxy-manual").append("Proxy Webpipe Error: "  + er);
-			} else {
-				$("#proxy-manual").append(prettyJSON(JSON.parse(data)));
-			}
-		});
-		
-		
-		var url = "https://raw.github.com/matthewhudson/dotfiles/master/README.md";
-	
-		webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
-			
-			if (er) {
-				$("#proxy-request").append("Proxy Webpipe Error: "  + er);
-			} else {
-				$("#proxy-request").append(data);
-			}
-		});
-		
-		var url = "https://raw.github.com/matthewhudson/dotfiles/master/README.md";
-		webpipe.request('proxy', { method: "GET", url : url }, function (er, data) {
-			if (er) {
-				$("#combined-request").append("Proxy Webpipe Error: "  + er);
-			} else {
-		
-				webpipe.request('markdown-to-html', { markdown : data }, function (er, data) {
-					if (er) {
-						$("#combined-request").append("Markdown Webpipe Error: "  + er);
-					} else {
-						$("#combined-request").append(escapeHTML(data));
-					}
-				});
-			}
-		})
-		
-		function escapeHTML(html) { 
-			return html.replace(/&/g,'&amp;')
-						.replace(/>/g,'&gt;')
-						.replace(/</g,'&lt;')
-						.replace(/"/g,'&quot;'); 
-		};
-
-		function prettyJSON(json) {
-			json = JSON.stringify(json, undefined, 4);
-		    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-		    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-		        var cls = 'number';
-		        if (/^"/.test(match)) {
-		            if (/:$/.test(match)) {
-		                cls = 'key';
-		            } else {
-		                cls = 'string';
-		            }
-		        } else if (/true|false/.test(match)) {
-		            cls = 'boolean';
-		        } else if (/null/.test(match)) {
-		            cls = 'null';
-		        }
-		        return '<span class="' + cls + '">' + match + '</span>';
-		    });
-		}
-	</script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+    <script src="../../webpipe.js"></script>
+    <script>
+        function initExample(name) {
+            $("#"+name+"-button").click(function() {
+                $("#"+name+"-output").text("");
+                try {
+                    fn = new Function("console", $("#"+name+"-input").text());
+                    fn({ log: function(arg) {
+                        for (var i = 0; i < arguments.length; i++) {
+                            var string = typeof arguments[i] === "string" ? arguments[i] : JSON.stringify(arguments[i], null, 2);
+                            $("#"+name+"-output").text($("#"+name+"-output").text() + string);
+                        }
+                    }});
+                } catch (e) {
+                    alert(e);
+                }
+            });
+        }
+        $(function() {
+            initExample("options");
+            initExample("execute");
+        });
+    </script>
 
 </body>
 </html>
