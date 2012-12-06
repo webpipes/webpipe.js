@@ -1,22 +1,33 @@
-var express = require('express');
-var app = express.createServer(express.logger());
 var webpipe = require('../../webpipe');
-	
-app.use(express.bodyParser());
 
-app.get('/', function(request, response) {
-	webpipe.manual('proxy', function (er, data) {
-		if (er) {
-			console.log(er);
-			response.send("Error: "  + er);
-		} else {
-			console.log(data);
-			response.send(data);
-		}
-	});
-});
+function optionsDemo(callback) {
+  webpipe.options('http://block-parse-markdown.herokuapp.com/', function (err, data) {
+    if (err) {
+      console.log("Error: ", err);
+    } else {
+      // Prints the webpipe.json config for the Parse Markdown webpipe.
+      console.log(data);
+    }
+    callback()
+  });
+}
 
-var port = process.env.PORT || 3020;
-app.listen(port, function() {
-	console.log("Webpipe.js Demo: Listening on " + port);
+function executeDemo(callback) {
+  webpipe.execute("http://block-parse-markdown.herokuapp.com/", { markdown: "*hello world*" }, function (err, data) {
+    if (err) {
+      console.log("Error: ", err);
+    } else {
+      // Prints the outputs of the WebPipe.
+      console.log(data);
+    }
+    callback();
+  });
+}
+
+console.log("Running webpipe.options()\n");
+optionsDemo(function() {
+  console.log("\nRunning webpipe.execute()\n");
+  executeDemo(function() {
+    console.log("\nDone!");
+  });
 });
