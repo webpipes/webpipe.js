@@ -1,11 +1,11 @@
 {
     "name": "webpipe",
     "description": "Harness the power of webpipes in browser and server environments, as well as the command-line.",
-    "homepage": "http://www.matthewghudson.com/projects/webpipe.js/",
+    "homepage": "https://github.com/webpipes/webpipe.js",
     "keywords": [
         "webpipe",
         "webpipes",
-		"cli"
+        "cli"
     ],
     "author": "Matthew Hudson <matt@matthewghudson.com>",
     "contributors": [
@@ -20,9 +20,9 @@
         "xmlhttprequest": "1.4.2",
         "coffee-script": "latest"
     },
-	"preferGlobal": true,
+    "preferGlobal": true,
     "main": "webpipe.js",
-	"bin": "webpipe-cli.js",
+    "bin": "webpipe-cli.js",
     "version": "0.4.0",
     "engines": {
         "node": "*"
