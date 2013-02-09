@@ -4,7 +4,7 @@ PATH = require "path"
 URL = require "url"
 HTTP = require "http"
 
-WEBPIPE = require "../webpipe.js"
+WEBPIPE = require "../"
 
 config_path = PATH.join process.env[if process.platform is 'win32' then 'USERPROFILE' else 'HOME'], ".webpipe"
 
