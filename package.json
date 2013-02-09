@@ -21,11 +21,11 @@
         "coffee-script": "latest"
     },
     "preferGlobal": true,
-    "main": "webpipe.js",
+    "main": "index",
     "bin": {
     	"webpipe": "./bin/webpipe"
 	},
-    "version": "0.4.3",
+    "version": "0.4.4",
     "engines": {
         "node": "*"
     }
