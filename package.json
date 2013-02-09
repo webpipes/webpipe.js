@@ -1,6 +1,6 @@
 {
     "name": "webpipe",
-    "description": "Harness the power of webpipes in browser and server environments, as well as the command-line.",
+    "description": "Harness the power of WebPipes in browser and server environments, as well as the command-line.",
     "homepage": "https://github.com/webpipes/webpipe.js",
     "keywords": [
         "webpipe",
@@ -25,7 +25,7 @@
     "bin": {
     	"webpipe": "./bin/webpipe"
 	},
-    "version": "0.4.2",
+    "version": "0.4.3",
     "engines": {
         "node": "*"
     }
