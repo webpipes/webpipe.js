@@ -1,7 +1,5 @@
 (function(exports) {
 
-exports.VERSION = "0.4.0";
-
 exports.options = function(url, callback) {
     return exports.request("OPTIONS", url, null, function (err, meta) {
         if (err) {
@@ -25,7 +23,6 @@ exports.execute = function(url, inputs, callback) {
 exports.request = function(method, url, body, callback) {
     var req = newXHR();
     req.open(method, url, true);
-    // req.setRequestHeader("Content-Type", "application/json");
     req.onreadystatechange = function() {
         if (req.readyState === 4) {
             if (req.status === 200) {
