@@ -42,12 +42,10 @@ The `webpipe.options()` loads a WebPipe's metadata. It's handy while debugging a
 
 ``` javascript
 webpipe.options('http://block-parse-markdown.herokuapp.com/', function (err, data) {
-  if (err) {
-    console.log("Error: ", err);
-  } else {
-    // Prints the webpipe.json config for the Parse Markdown webpipe.
-    console.log(data);
-  }
+  if (err) return console.log("Error: ", err);
+
+  // Prints the Block Definition for the Parse Markdown webpipe.
+  console.log(data);
 });
 ``` 
 
@@ -57,12 +55,10 @@ The real workhorse is `webpipe.execute()`. You can use it to make a request to y
 
 ``` javascript
 webpipe.execute("http://block-parse-markdown.herokuapp.com/", { markdown: "*hello world*" }, function (err, data) {
-  if (err) {
-    console.log("Error: ", err);
-  } else {
-    // Prints the outputs of the WebPipe.
-    console.log(data);
-  }
+  if (err) return console.log("Error: ", err);
+
+  // Prints the response of the Parse Markdown webpipe.
+  console.log(data);
 });
 ``` 
 
