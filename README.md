@@ -2,6 +2,8 @@
 
 Javascript library for working with WebPipes. Use with Node.js or in the browser.
 
+[![Build Status](https://travis-ci.org/webpipes/webpipe.js.png?branch=master)](https://travis-ci.org/webpipes/webpipe.js)
+
 ## Installation
 
 Just include the script. The `webpipe` object is automagically added to your environment. No need for `new` or any other sort of initialization. In the browser do the following:
