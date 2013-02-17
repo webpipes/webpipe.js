@@ -16,6 +16,7 @@
         "type": "git",
         "url": "git://github.com/webpipes/webpipe.js.git"
     },
+    "bugs": "https://github.com/webpipes/webpipe.js/issues",
     "dependencies": {
         "xmlhttprequest": "1.4.2",
         "coffee-script": "latest"
