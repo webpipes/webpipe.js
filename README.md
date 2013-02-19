@@ -6,7 +6,9 @@ Javascript library for working with WebPipes. Use with Node.js or in the browser
 
 ## Installation
 
-Just include the script. The `webpipe` object is automagically added to your environment. No need for `new` or any other sort of initialization. In the browser do the following:
+Just include the script. The `webpipe` object is automagically added to your environment. No need for `new` or any other sort of initialization. 
+
+### Browser
 
 ``` html
 <script src="webpipe.js"></script>
@@ -24,6 +26,8 @@ Or, use a specific version by replacing <code>x.x.x</code>:
 <script src="http://cdn.webpipejs.org/x.x.x/webpipe.min.js"></script>
 ```
 
+### Node
+
 Or, if you're using webpipe.js with node.js
 
 	$ npm -g install webpipe
@@ -36,24 +40,9 @@ var webpipe = require("webpipe");
 
 ## Usage
 
-webpipe.js exposes two methods: `webpipe.execute()` and `webpipe.options()`. 
+webpipe.js exposes two methods: `webpipe.execute()` and `webpipe.options()`. Use `webpipe.options()` to load a WebPipe's Block Definition. It can be handy while debugging and/or learning about new WebPipes. See [examples/](https://github.com/webpipes/webpipe.js/blob/master/examples/) for usage examples.
 
-### webpipe.options(url, callback)
-
-The `webpipe.options()` loads a WebPipe's metadata. It's handy while debugging and/or learning about new webpipes.
-
-``` javascript
-webpipe.options('http://block-parse-markdown.herokuapp.com/', function (err, data) {
-  if (err) return console.log("Error: ", err);
-
-  // Prints the Block Definition for the Parse Markdown webpipe.
-  console.log(data);
-});
-``` 
-
-### webpipe.execute(url, inputs, callback)
-
-The real workhorse is `webpipe.execute()`. You can use it to make a request to your WebPipe of choice.
+The real workhorse is `webpipe.execute()`. Use it to make a request to your WebPipe of choice.
 
 ``` javascript
 webpipe.execute("http://block-parse-markdown.herokuapp.com/", { markdown: "*hello world*" }, function (err, data) {
@@ -81,7 +70,7 @@ Prefix a value with `@` to read from a file, or `-` for STDIN:
 
 ## More Examples
 
-See [./examples/browser/index.html](https://github.com/webpipes/webpipe.js/blob/master/examples/browser/index.html) and [./examples/nodejs/index.js](https://github.com/webpipes/webpipe.js/blob/master/examples/nodejs/index.js) for more examples of usage.
+See [examples/browser/index.html](https://github.com/webpipes/webpipe.js/blob/master/examples/browser/index.html) and [examples/nodejs/index.js](https://github.com/webpipes/webpipe.js/blob/master/examples/nodejs/index.js) for more examples of usage.
 
 ## Suggestions
 
