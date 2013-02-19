@@ -42,6 +42,8 @@ var webpipe = require("webpipe");
 
 webpipe.js exposes two methods: `webpipe.execute()` and `webpipe.options()`. Use `webpipe.options()` to load a WebPipe's Block Definition. It can be handy while debugging and/or learning about new WebPipes. See [examples/](https://github.com/webpipes/webpipe.js/blob/master/examples/) for usage examples.
 
+### webpipe.execute(url, inputs, callback)
+
 The real workhorse is `webpipe.execute()`. Use it to make a request to your WebPipe of choice.
 
 ``` javascript
