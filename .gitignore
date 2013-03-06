@@ -1,4 +1,4 @@
 .DS_Store
-latest-min.js
-demo/
-node_modules/
+/node_modules/
+/git_hooks/
+/npm-debug.log
