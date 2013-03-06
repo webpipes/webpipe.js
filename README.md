@@ -47,8 +47,10 @@ webpipe.js exposes two methods: `webpipe.execute()` and `webpipe.options()`. Use
 The real workhorse is `webpipe.execute()`. Use it to make a request to your WebPipe of choice.
 
 ``` javascript
-webpipe.execute("http://block-parse-markdown.herokuapp.com/", { markdown: "*hello world*" }, function (err, data) {
-  if (err) return console.log("Error: ", err);
+var url = "http://block-parse-markdown.herokuapp.com/";
+var inputs = { markdown: "*hello world*" };
+webpipe.execute(url, inputs, function (err, data) {
+  if (err) return console.warn("Error: ", err);
 
   // Prints the response of the Parse Markdown webpipe.
   console.log(data);
