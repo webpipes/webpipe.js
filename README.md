@@ -30,7 +30,7 @@ Or, use a specific version by replacing <code>x.x.x</code>:
 
 Or, if you're using webpipe.js with node.js
 
-	$ npm -g install webpipe
+	$ npm [-g] install webpipe
 
 Then require the "webpipe" module:
 
