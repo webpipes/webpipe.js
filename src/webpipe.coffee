@@ -1,5 +1,13 @@
+# webpipe.js
+
+# webpipe.js can be used both on the server, as a command-line interface, or to 
+# directly in the browser. The `webpipe` object is automagically added to your 
+# environment. No need for `new` or any other sort of initialization.
+
+# Establish the root object, `window` in the browser, or `global` on the server.
 webpipe = exports ? (this.webpipe = {})
 
+# Read the Block Definition for a given WebPipe.
 webpipe.options = (url, callback) ->
   return _request 'OPTIONS', url, null, (err, meta) ->
     if err
@@ -13,11 +21,13 @@ webpipe.options = (url, callback) ->
       
       callback null, meta 
 
+# Execute a WebPipe with optional provided arguments. 
 webpipe.execute = (url, inputs, callback) ->
   _request 'POST', url, { 'inputs': [inputs] }, callback
 
+# Private function utilized by `options` and `execute`
 _request = (method, url, body, callback) ->
-  req = _xhr();
+  req = _xhr()
   req.open method, url, true 
   req.onreadystatechange = () ->
     if req.readyState is 4
@@ -32,12 +42,13 @@ _request = (method, url, body, callback) ->
         callback({
           code: req.status,
           message: req.statusText
-        }, null);
+        }, null)
   if body
     req.send JSON.stringify body
   else
     req.send null
 
+# Private function for initializing a `XMLHttpRequest` object.
 _xhr = () ->
   if ActiveXObject?
     req = new ActiveXObject('Microsoft.XMLHTTP')
