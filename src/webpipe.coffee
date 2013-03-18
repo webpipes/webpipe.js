@@ -1,6 +1,4 @@
-# webpipe.js
-
-# webpipe.js can be used both on the server, as a command-line interface, or to 
+# webpipe.js can be used on the server, as a command-line interface, or 
 # directly in the browser. The `webpipe` object is automagically added to your 
 # environment. No need for `new` or any other sort of initialization.
 
