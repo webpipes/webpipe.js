@@ -1,8 +1,8 @@
-
 FS = require "fs"
 PATH = require "path"
 URL = require "url"
 HTTP = require "http"
+QUERYSTRING = require "querystring"
 
 WEBPIPE = require "../"
 
@@ -16,6 +16,7 @@ usage = ->
       webpipe NAME [--INPUT VALUE ...]
       webpipe alias NAME URL
       webpipe aliases
+      webpipe publish URL
       webpipe help (NAME|URL)
 
   """
@@ -71,6 +72,35 @@ actions =
       else
         console.log response
         process.exit 0
+
+  # curl -i -X POST -d 'url=http://block-endpoint' http://registry.webpipes.org/blocks
+  publish: (args) ->
+    usage() if args.length is 0
+    url = args.shift()
+    usage() unless url?
+
+    data = QUERYSTRING.stringify({
+      url: url
+    })
+    data = "url=" + url
+    console.log(data)
+
+    # An object of options to indicate where to post to
+    options =
+      host: 'registry.webpipes.org'
+      port: '80'
+      path: '/blocks'
+      method: 'POST'
+
+    # Set up the request
+    req = HTTP.request options, (res) ->
+      res.setEncoding 'utf8'
+      res.on 'data', (chunk) ->
+          console.log('Response: ' + chunk)
+
+    # POST the data
+    req.write(data)
+    req.end()
 
   help: (args) ->
     usage() if args.length is 0
