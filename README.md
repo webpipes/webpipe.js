@@ -61,17 +61,20 @@ webpipe.execute(url, inputs, function (err, data) {
 ## Command-line Usage 
 
 You can also use webpipe.js from the command-line. To use this feature make sure you install webpipe.js globally. 
-
-	$ webpipe http://block-parse-markdown.herokuapp.com/ --markdown "*hello world*"
+``` sh
+$ webpipe http://block-parse-markdown.herokuapp.com/ --markdown "*hello world*"
+```
 
 Store an alias (in ~/.webpipe) so you don't have to type the URL every time:
-
-	$ webpipe alias markdown http://block-parse-markdown.herokuapp.com/
+``` sh
+$ webpipe alias markdown http://block-parse-markdown.herokuapp.com/
+```
 
 Prefix a value with `@` to read from a file, or `-` for STDIN:
-
-	$ webpipe markdown --markdown @README.md
-	$ cat README.md | ./webpipe markdown --markdown @-
+``` sh
+$ webpipe markdown --markdown @README.md
+$ cat README.md | ./webpipe markdown --markdown @-
+```
 
 ## More Examples
 
