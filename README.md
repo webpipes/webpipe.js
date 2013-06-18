@@ -29,8 +29,9 @@ Or, use a specific version by replacing <code>x.x.x</code>:
 ### Node
 
 Or, if you're using webpipe.js with node.js
-
-	$ npm [-g] install webpipe
+``` sh
+$ npm [-g] install webpipe
+```
 
 Then require the "webpipe" module:
 
