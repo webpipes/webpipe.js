@@ -76,10 +76,6 @@ $ webpipe markdown --markdown @README.md
 $ cat README.md | ./webpipe markdown --markdown @-
 ```
 
-## More Examples
-
-See [examples/browser/index.html](https://github.com/webpipes/webpipe.js/blob/master/examples/browser/index.html) and [examples/nodejs/index.js](https://github.com/webpipes/webpipe.js/blob/master/examples/nodejs/index.js) for more examples of usage.
-
 ## Suggestions
 
 All comments in how to improve this library are very welcome. Feel free post suggestions to the Issue tracker, or even better, fork the repository to implement your own ideas and submit a pull request.
