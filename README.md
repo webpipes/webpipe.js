@@ -3,7 +3,9 @@
 Javascript library for working with WebPipes. Use with Node.js or in the
 browser.
 
-[![Build Status](https://api.travis-ci.org/webpipes/webpipe.js.svg?branch=master)](https://travis-ci.org/webpipes/webpipe.js)
+[![Build
+Status](https://api.travis-ci.org/webpipes/webpipe.js.svg?branch=master)](https://travis-ci.org/webpipes/webpipe.js)
+![GitHub file size in bytes](https://img.shields.io/github/size/webpipes/webpipe.js/webpipe.min.js.svg)
 
 ## Installation
 
@@ -13,19 +15,13 @@ environment. No need for `new` or any other sort of initialization.
 ### Browser
 
 ```html
-<script src="webpipe.js"></script>
-```
-
-As a courtesy, webpipejs.org offers a compressed and CDN-hosted version:
-
-```html
-<script src="http://cdn.webpipejs.org/latest.min.js"></script>
+<script src="https://unpkg.com/webpipe/webpipe.min.js"></script>
 ```
 
 Or, use a specific version by replacing <code>x.x.x</code>:
 
 ```html
-<script src="http://cdn.webpipejs.org/x.x.x/webpipe.min.js"></script>
+<script src="https://unpkg.com/webpipe@0.4.5/webpipe.min.js"></script>
 ```
 
 ### Node
@@ -39,7 +35,7 @@ $ npm [-g] install webpipe
 Then require the "webpipe" module:
 
 ```javascript
-var webpipe = require('webpipe')
+const webpipe = require('webpipe')
 ```
 
 ## Usage
