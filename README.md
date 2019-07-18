@@ -52,13 +52,16 @@ The real workhorse is `webpipe.execute()`. Use it to make a request to your
 WebPipe of choice.
 
 ```javascript
-var url = 'http://block-parse-markdown.herokuapp.com/'
-var inputs = { markdown: '*hello world*' }
-webpipe.execute(url, inputs, function(err, data) {
-  if (err) return console.warn('Error: ', err)
+const url = 'https://demo.wetalky.com/blocks/calculate-square-root/'
+const inputs = { markdown: '*hello world*' }
+webpipe.execute(url, inputs, (er, data) => {
+  if (er) {
+    return console.error(er)
+  }
 
-  // Prints the response of the Parse Markdown webpipe.
+  // Prints the response of the Parse Markdown webpipe:
   console.log(data)
+  // <b>hello world</b>
 })
 ```
 
@@ -68,13 +71,13 @@ You can also use webpipe.js from the command-line. To use this feature make sure
 you install webpipe.js globally.
 
 ```sh
-$ webpipe http://block-parse-markdown.herokuapp.com/ --markdown "*hello world*"
+$ webpipe https://demo.wetalky.com/blocks/calculate-square-root/ --markdown "*hello world*"
 ```
 
 Store an alias (in ~/.webpipe) so you don't have to type the URL every time:
 
 ```sh
-$ webpipe alias markdown http://block-parse-markdown.herokuapp.com/
+$ webpipe alias markdown https://demo.wetalky.com/blocks/calculate-square-root/
 ```
 
 Prefix a value with `@` to read from a file, or `-` for STDIN:

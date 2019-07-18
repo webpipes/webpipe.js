@@ -1,40 +1,53 @@
 {
-    "name": "webpipe",
-    "description": "Harness the power of WebPipes in browser and server environments, as well as the command-line.",
-    "version": "0.4.5",
-    "homepage": "https://github.com/webpipes/webpipe.js",
-    "keywords": [
-        "webpipe",
-        "webpipes",
-        "cli"
-    ],
-    "author": "Matthew Hudson <matt@matthewghudson.com>",
-    "contributors": [
-        "Matthew Hudson <matt@matthewghudson.com>",
-        "Tom Robinson <tlrobinson@gmail.com> (http://tlrobinson.net/)"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/webpipes/webpipe.js.git"
-    },
-    "bugs": "https://github.com/webpipes/webpipe.js/issues",
-    "dependencies": {
-        "xmlhttprequest": "1.4.2",
-        "coffee-script": "latest"
-    },
-    "preferGlobal": true,
-    "main": "index",
-    "bin": {
-    	"webpipe": "./bin/webpipe"
-	},
-    "engines": {
-        "node": "*"
-    },
-    "scripts": {
-        "test": "vows --spec test/*"
-    },
-    "devDependencies": {
-        "vows": "0.7.0",
-        "async": "0.2.6"
-    }
+  "name": "webpipe",
+  "description": "Harness the power of WebPipes in browser and server environments, as well as the command-line.",
+  "version": "0.4.5",
+  "homepage": "https://github.com/webpipes/webpipe.js",
+  "author": "Matthew Hudson <matthud@gmail.com>",
+  "contributors": [
+    "Matthew Hudson <matthud@gmail.com>",
+    "Tom Robinson <tlrobinson@gmail.com> (http://tlrobinson.net/)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/webpipes/webpipe.js.git"
+  },
+  "bugs": "https://github.com/webpipes/webpipe.js/issues",
+  "preferGlobal": true,
+  "bin": {
+    "webpipe": "./bin/webpipe"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "es",
+    "lib",
+    "umd",
+    "webpipe",
+    "webpipes",
+    "cli"
+  ],
+  "scripts": {
+    "build": "nwb build-web-module",
+    "clean": "nwb clean-module",
+    "prepublishOnly": "npm run build",
+    "test": "nwb test",
+    "test:coverage": "nwb test --coverage",
+    "test:watch": "nwb test --server"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-prettier-standard": "^3.0.1",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "esm": "^3.2.25",
+    "nwb": "^0.23.0",
+    "prettier": "1.18.2",
+    "prettier-config-standard": "^1.0.1"
+  }
 }
