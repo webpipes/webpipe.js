@@ -46,8 +46,13 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "esm": "^3.2.25",
+    "nock": "^10.0.6",
     "nwb": "^0.23.0",
     "prettier": "1.18.2",
     "prettier-config-standard": "^1.0.1"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }

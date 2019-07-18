@@ -59,20 +59,8 @@ const _request = (method, url, body, callback) => {
   }
 }
 
-const _isDefined = v => typeof v !== 'undefined'
-const _isNotNull = v => v !== null
-
 // Private function for initializing a `XMLHttpRequest` object.
-const _xhr = () => {
-  let req
-  if (_isDefined(ActiveXObject) && _isNotNull(ActiveXObject)) {
-    req = new ActiveXObject('Microsoft.XMLHTTP')
-  } else if (_isDefined(XMLHttpRequest) && _isNotNull(XMLHttpRequest)) {
-    req = new XMLHttpRequest()
-  } else if (_isDefined(require) && _isNotNull(require)) {
-    req = new (require('xmlhttprequest')).XMLHttpRequest()
-  }
-  return req
-}
+const isServer = typeof window === 'undefined'
+const _fetch = isServer ? require('node-fetch') : window.fetch
 
 export default webpipe
