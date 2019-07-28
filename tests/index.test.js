@@ -1,6 +1,6 @@
 import expect from 'expect'
 import nock from 'nock'
-import webpipe from 'src/index'
+import webpipe from '../src/index'
 
 const endpoint = {
   host: 'https://demo.wetalky.com',
