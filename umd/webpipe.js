@@ -108,12 +108,12 @@ module.exports = __webpack_require__(1);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// webpipe.js can be used on the server, as a command-line interface, or
-// directly in the browser. The `webpipe` object is auto-magically added to your
+// webpipe.js can be used on the server, or directly in the browser.
+// The `webpipe` object is auto-magically added to your
 // environment. No need for `new` or any other sort of initialization.
 
-// Establish the root object, `window` in the browser, or `global` on the
-
+// Establish the root object, `window` in the browser,
+// or `global` on the server
 var IS_SERVER = typeof window === 'undefined';
 var _fetch = IS_SERVER ? __webpack_require__(2) : window.fetch;
 
@@ -128,6 +128,7 @@ var error = function error(err) {
   console.error(err);
   throw new Error(err);
 };
+
 // Retrieves the Block Definition for a given WebPipe.
 var options = function options(url, callback) {
   _fetch(url, {
@@ -144,7 +145,7 @@ var options = function options(url, callback) {
   });
 };
 
-// Executes the Block Definition for a given WebPipe.
+// Executes the a call w/ argument(s) to a given WebPipe.
 var execute = function execute(url, inputs, callback) {
   _fetch(url, {
     method: 'post',
@@ -165,6 +166,7 @@ var webpipe = {
   options: options,
   execute: execute
 };
+
 /* harmony default export */ __webpack_exports__["default"] = (webpipe);
 
 /***/ }),

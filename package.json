@@ -1,6 +1,6 @@
 {
   "name": "webpipe",
-  "description": "Harness the power of WebPipes in browser and server environments, as well as the command-line.",
+  "description": "Harness the power of WebPipes in browser and server environments.",
   "version": "0.4.5",
   "homepage": "https://github.com/webpipes/webpipe.js",
   "author": "Matthew Hudson <matthud@gmail.com>",
