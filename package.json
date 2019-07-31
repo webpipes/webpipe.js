@@ -13,10 +13,6 @@
     "url": "git://github.com/webpipes/webpipe.js.git"
   },
   "bugs": "https://github.com/webpipes/webpipe.js/issues",
-  "preferGlobal": true,
-  "bin": {
-    "webpipe": "./bin/webpipe"
-  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -24,8 +20,7 @@
     "lib",
     "umd",
     "webpipe",
-    "webpipes",
-    "cli"
+    "webpipes"
   ],
   "scripts": {
     "build": "nwb build-web-module",
@@ -45,14 +40,11 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
-    "esm": "^3.2.25",
-    "nock": "^10.0.6",
     "nwb": "^0.23.0",
     "prettier": "1.18.2",
     "prettier-config-standard": "^1.0.1"
   },
   "dependencies": {
-    "node-fetch": "^2.6.0",
-    "xmlhttprequest": "^1.8.0"
+    "node-fetch": "^2.6.0"
   }
 }

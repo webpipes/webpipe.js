@@ -49,13 +49,14 @@
       WebPipe in question.
     </p>
     <pre id="options-input" contenteditable>
-var blockURL = "http://block-parse-markdown.herokuapp.com/";
-webpipe.options(blockURL, function (err, data) {
+var url = "https://webpip.es/calculate-square-root";
+
+webpipe.options(url, function (err, outputs) {
   if (err) {
     console.log("Error: ", err);
   } else {
-    // Prints the webpipe.json config for the Parse Markdown webpipe.
-    console.log(data);
+    // Logs the block definitions.
+    console.log(outputs);
   }
 });</pre
     >
@@ -70,16 +71,16 @@ webpipe.options(blockURL, function (err, data) {
       dirty work of executing a WebPipe.
     </p>
     <pre id="execute-input" contenteditable>
-const url = "https://webpip.es/calculate-square-root";
-webpipe.execute(url, { domain: 9 }, function (err, data) {
+const url = "https://webpip.es/calculate-square-root"
+
+webpipe.execute(url, { radicand: 9 }, function (err, outputs) {
   if (err) {
-    console.log("Error: ", err);
-    error()
+    console.log("Error: ", err)
   } else {
     // Prints the outputs of the WebPipe.
-    console.log(data);
+    console.log(outputs)
   }
-});</pre
+})</pre
     >
     <div>
       <button id="execute-button" class="btn btn-inverse btn-small">Run</button>
@@ -87,7 +88,7 @@ webpipe.execute(url, { domain: 9 }, function (err, data) {
     <pre id="execute-output"></pre>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
-    <script src="../../src/index.js"></script>
+    <script src="../../umd/webpipe.js"></script>
     <script>
       function initExample(name) {
         $('#' + name + '-button').click(function() {

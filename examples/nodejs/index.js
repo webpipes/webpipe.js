@@ -1,7 +1,7 @@
 var webpipe = require('../../')
 
 function optionsDemo (callback) {
-  webpipe.options('http://block-parse-markdown.herokuapp.com/', function (
+  webpipe.options('https://block-parse-markdown.herokuapp.com/', function (
     err,
     data
   ) {
