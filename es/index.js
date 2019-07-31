@@ -5,7 +5,7 @@
 // Establish the root object, `window` in the browser, or `global` on the
 
 var IS_SERVER = typeof window === 'undefined';
-// this.fetch = IS_SERVER ? require('node-fetch') : window.fetch
+var _fetch = IS_SERVER ? require('node-fetch') : window.fetch;
 
 var check = function check(res) {
   if (res.status !== 200) {
@@ -18,10 +18,9 @@ var error = function error(err) {
   console.error(err);
   throw new Error(err);
 };
-
 // Retrieves the Block Definition for a given WebPipe.
 var options = function options(url, callback) {
-  fetch(url, {
+  _fetch(url, {
     method: 'options',
     headers: {
       'Content-Type': 'application/json'
@@ -34,7 +33,26 @@ var options = function options(url, callback) {
     return error(err.message || err);
   });
 };
+
+// Executes the Block Definition for a given WebPipe.
+var execute = function execute(url, inputs, callback) {
+  _fetch(url, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ inputs: [inputs] })
+  }).then(function (res) {
+    return check(res);
+  }).then(function (json) {
+    return callback(null, json);
+  }).catch(function (err) {
+    return error(err.message || err);
+  });
+};
+
 var webpipe = {
-  options: options
+  options: options,
+  execute: execute
 };
 export default webpipe;

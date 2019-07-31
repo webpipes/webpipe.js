@@ -115,7 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 // Establish the root object, `window` in the browser, or `global` on the
 
 var IS_SERVER = typeof window === 'undefined';
-// this.fetch = IS_SERVER ? require('node-fetch') : window.fetch
+var _fetch = IS_SERVER ? __webpack_require__(2) : window.fetch;
 
 var check = function check(res) {
   if (res.status !== 200) {
@@ -128,10 +128,9 @@ var error = function error(err) {
   console.error(err);
   throw new Error(err);
 };
-
 // Retrieves the Block Definition for a given WebPipe.
 var options = function options(url, callback) {
-  fetch(url, {
+  _fetch(url, {
     method: 'options',
     headers: {
       'Content-Type': 'application/json'
@@ -144,10 +143,58 @@ var options = function options(url, callback) {
     return error(err.message || err);
   });
 };
+
+// Executes the Block Definition for a given WebPipe.
+var execute = function execute(url, inputs, callback) {
+  _fetch(url, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ inputs: [inputs] })
+  }).then(function (res) {
+    return check(res);
+  }).then(function (json) {
+    return callback(null, json);
+  }).catch(function (err) {
+    return error(err.message || err);
+  });
+};
+
 var webpipe = {
-  options: options
+  options: options,
+  execute: execute
 };
 /* harmony default export */ __webpack_exports__["default"] = (webpipe);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// ref: https://github.com/tc39/proposal-global
+var getGlobal = function () {
+	// the only reliable means to get the global object is
+	// `Function('return this')()`
+	// However, this causes CSP violations in Chrome apps.
+	if (typeof self !== 'undefined') { return self; }
+	if (typeof window !== 'undefined') { return window; }
+	if (typeof global !== 'undefined') { return global; }
+	throw new Error('unable to locate global object');
+}
+
+var global = getGlobal();
+
+module.exports = exports = global.fetch;
+
+// Needed for TypeScript and Webpack.
+exports.default = global.fetch.bind(global);
+
+exports.Headers = global.Headers;
+exports.Request = global.Request;
+exports.Response = global.Response;
 
 /***/ })
 /******/ ])["default"];
