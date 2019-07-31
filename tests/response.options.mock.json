@@ -1,0 +1,18 @@
+{
+  "name": "Square Root",
+  "description": "Calculates the Square Root of a number.",
+  "inputs": [
+    {
+      "name": "radicand",
+      "type": "number",
+      "description": "The number we want to find square root for."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "square_root",
+      "type": "number",
+      "description": "The square root."
+    }
+  ]
+}

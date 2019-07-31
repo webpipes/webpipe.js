@@ -1,33 +1,20 @@
-var webpipe = require('../../');
+const webpipe = require('../../')
 
-function optionsDemo(callback) {
-  webpipe.options('http://block-parse-markdown.herokuapp.com/', function (err, data) {
-    if (err) {
-      console.log("Error: ", err);
-    } else {
-      // Prints the webpipe.json config for the Parse Markdown webpipe.
-      console.log(data);
-    }
-    callback()
-  });
-}
+const url = 'https://webpip.es/calculate-square-root'
 
-function executeDemo(callback) {
-  webpipe.execute("http://block-parse-markdown.herokuapp.com/", { markdown: "*hello world*" }, function (err, data) {
-    if (err) {
-      console.log("Error: ", err);
-    } else {
-      // Prints the outputs of the WebPipe.
-      console.log(data);
-    }
-    callback();
-  });
-}
+webpipe.options(url, function (err, block) {
+  if (err) {
+    console.error(err)
+  } else {
+    // Prints the outputs of the WebPipe.
+    console.log(block)
+  }
+})
 
-console.log("Running webpipe.options()\n");
-optionsDemo(function() {
-  console.log("\nRunning webpipe.execute()\n");
-  executeDemo(function() {
-    console.log("\nDone!");
-  });
-});
+webpipe.execute(url, { radicand: 9 }, function (err, outputs) {
+  if (err) {
+    console.error(err)
+  } else {
+    console.log(outputs)
+  }
+})
