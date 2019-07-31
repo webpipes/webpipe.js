@@ -5,7 +5,7 @@ browser.
 
 [![Build
 Status](https://api.travis-ci.org/webpipes/webpipe.js.svg?branch=master)](https://travis-ci.org/webpipes/webpipe.js)
-![GitHub file size in bytes](https://img.shields.io/github/size/webpipes/webpipe.js/webpipe.min.js.svg)
+[![install size](https://packagephobia.now.sh/badge?p=webpipe@1.0.0)](https://packagephobia.now.sh/result?p=webpipe@1.0.0)
 
 ## Installation
 
