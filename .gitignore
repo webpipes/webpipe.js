@@ -279,5 +279,13 @@ Temporary Items
 layers/
 layer/
 _diary/
+/coverage
+/demo/dist
+/es
+/lib
+/node_modules
+/umd
+npm-debug.log*
+.DS_Store
 
 # End of custom

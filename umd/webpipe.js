@@ -1,4 +1,4 @@
-/*! webpipe v0.4.5 - https://github.com/webpipes/webpipe.js */
+/*! webpipe v1.0.0 - https://github.com/webpipes/webpipe.js */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
