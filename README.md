@@ -5,7 +5,7 @@ browser.
 
 [![Build
 Status](https://api.travis-ci.org/webpipes/webpipe.js.svg?branch=master)](https://travis-ci.org/webpipes/webpipe.js)
-[![install size](https://packagephobia.now.sh/badge?p=webpipe@1.0.0)](https://packagephobia.now.sh/result?p=webpipe@1.0.0)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/webpipe)](https://bundlephobia.com/result?p=webpipe)
 
 ## Installation
 
@@ -14,14 +14,15 @@ environment. No need for `new` or any other sort of initialization.
 
 ### Browser
 
+Automatically include the most recent release:
 ```html
-<script src="https://unpkg.com/webpipe/webpipe.min.js"></script>
+<script src="https://unpkg.com/webpipe/umd/webpipe.min.js"></script>
 ```
 
 Or, use a specific version by replacing <code>x.x.x</code>:
 
 ```html
-<script src="https://unpkg.com/webpipe@0.4.5/webpipe.min.js"></script>
+<script src="https://unpkg.com/webpipe@1.0.0/umd/webpipe.min.js"></script>
 ```
 
 ### Node
@@ -29,7 +30,7 @@ Or, use a specific version by replacing <code>x.x.x</code>:
 Or, if you're using webpipe.js with node.js
 
 ```sh
-$ npm [-g] install webpipe
+$ npm i webpipe --save
 ```
 
 Then require the "webpipe" module:
